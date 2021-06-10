@@ -8,24 +8,34 @@
   <title>Countdown</title>
 </head>
 <body>
-  <div class="countdown" id='countdown'>
-    <div>
-      <p class="number" id="dias">00</p>
-      <p class="txt">Días</p>
-    </div>
-    <div>
-      <p class="number" id="horas">00</p>
-      <p class="txt">Horas</p>
-    </div>
-    <div>
-      <p class="number" id="minutos">00</p>
-      <p class="txt">Minutos</p>
-    </div>
-    <div>
-      <p class="number" id='segundos'>00</p>
-      <p class="txt">Segundos</p>
-    </div>
+  <div class="container">
+    <div class="countdown" id='countdown'>
+      <div>
+        <p class="number" id="dias">00</p>
+        <p class="txt">Días</p>
+      </div>
+      <div>
+        <p class="number" id="horas">00</p>
+        <p class="txt">Horas</p>
+      </div>
+      <div>
+        <p class="number" id="minutos">00</p>
+        <p class="txt">Minutos</p>
+      </div>
+      <div>
+        <p class="number" id='segundos'>00</p>
+        <p class="txt">Segundos</p>
+      </div>
 
+    </div>
+    <form action="" id="form">
+      <label for="">Insertar fecha futura</label>
+      <input type="date" id="input" placeholder="insertar una fecha futura">
+      <button id="button">Enviar</button>
+    </form>
+    <form action="">
+      <button class="reset">reset</button>
+    </form>
   </div>
   <script src="js.js"></script>
 </body>
