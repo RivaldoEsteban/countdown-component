@@ -51,6 +51,8 @@ body {
 
 #form button {
   border-radius: 8px;
+  cursor: pointer;
+  height: 28px;
 }
 
 .reset {
@@ -62,6 +64,11 @@ body {
   font: 600 normal 1rem/1rem arial;
   border: none;
   cursor: pointer;
+}
+
+.reset:hover {
+  background: blue;
+  color: white;
 }
 
 @media (max-width: 1200px) {
