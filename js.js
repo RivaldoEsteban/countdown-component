@@ -1,3 +1,10 @@
+
+const day = document.getElementById("dias");
+const hour = document.getElementById("horas");
+const minute = document.getElementById("minutos");
+const second = document.getElementById("segundos");
+
+
 function countdownToMyBirthday(maximumDate) {
   const date = new Date();
   const remainTime = (new Date(maximumDate) - date + 1000) / 1000; //segundos
@@ -14,28 +21,17 @@ function countdownToMyBirthday(maximumDate) {
     .toString()
     .padStart(2, "00");
 
-  return {
-    remainTime,
-    seconds,
-    minutes,
-    hours,
-    days,
-  };
+  day.textContent = days
+  hour.textContent = hours
+  minute.textContent = minutes
+  second.textContent = seconds
+  return remainTime
 }
-
-const day = document.getElementById("dias");
-const hour = document.getElementById("horas");
-const minute = document.getElementById("minutos");
-const second = document.getElementById("segundos");
 
 function countdown (maximumDate, message) {
   const container = document.getElementById("countdown");
-  const timerUpdate = setInterval(() => {
+  setInterval(() => {
     const time = countdownToMyBirthday(maximumDate);
-    day.textContent = time.days;
-    hour.textContent = time.hours;
-    minute.textContent = time.minutes;
-    second.textContent = time.seconds;
     if (time.remainTime <= 1) {
       container.innerHTML = message;
     }
@@ -43,23 +39,15 @@ function countdown (maximumDate, message) {
 };
 
 //formulario
-const form = document.getElementById("form");
 const button = document.getElementById("button");
 const input = document.getElementById("input");
 
-button.addEventListener("click", (event) => {
-  event.preventDefault();
-  const date = new Date();
-  const fechaIngresada = `${input.value}  ${date
-    .getHours()
-    .toString()
-    .padStart(2, "00")}:${date.getMinutes().toString().padStart(2, "00")}:${date
-    .getSeconds()
-    .toString()
-    .padStart(2, "00")} GMT-0500`;
-  if(input.value){
-    countdown(fechaIngresada, "Se acabo el tiempo, vuelva a ingresar una fecha");
+
+button.addEventListener("click", () => {
+  if(input.value) {
+    countdown(input.value, "Se acabo el tiempo, vuelva a ingresar una fecha");
   } else {
-    countdown('1999-08-28', "Resetea el contador, no ingresaste una fecha");
+    countdown('2022,08,08', "Se acabo el tiempo, vuelva a ingresar una fecha");
   }
-});
+})
+
