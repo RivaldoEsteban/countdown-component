@@ -33,6 +33,7 @@ function countdownToMyBirthday(maximumDate) {
 
 function countdown (maximumDate) {
   setInterval(() => {
+    console.log(countdownToMyBirthday(maximumDate))
     countdownToMyBirthday(maximumDate);
   }
   , 1000)
