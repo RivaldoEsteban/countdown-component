@@ -28,7 +28,7 @@ const hour = document.getElementById("horas");
 const minute = document.getElementById("minutos");
 const second = document.getElementById("segundos");
 
-const countdown = (maximumDate, finalMessage) => {
+function countdown (maximumDate, message) {
   const container = document.getElementById("countdown");
   const timerUpdate = setInterval(() => {
     const time = countdownToMyBirthday(maximumDate);
@@ -37,8 +37,7 @@ const countdown = (maximumDate, finalMessage) => {
     minute.textContent = time.minutes;
     second.textContent = time.seconds;
     if (time.remainTime <= 1) {
-      // container.innerHTML = finalMessage;
-      return countdown("08 28 2021 19:10:17 GMT-0500", "countdown");
+      container.innerHTML = message;
     }
   }, 1000);
 };
@@ -51,18 +50,16 @@ const input = document.getElementById("input");
 button.addEventListener("click", (event) => {
   event.preventDefault();
   const date = new Date();
-  const x = `${input.value}  ${date
+  const fechaIngresada = `${input.value}  ${date
     .getHours()
     .toString()
     .padStart(2, "00")}:${date.getMinutes().toString().padStart(2, "00")}:${date
     .getSeconds()
     .toString()
     .padStart(2, "00")} GMT-0500`;
-  countdown(x, "tiempo finalizado"); //fecha , contenedor, mensaje
+  if(input.value){
+    countdown(fechaIngresada, "Se acabo el tiempo, vuelva a ingresar una fecha");
+  } else {
+    countdown('1999-08-28', "Resetea el contador, no ingresaste una fecha");
+  }
 });
-
-const cumplePaula = "10 28 2021 00:00:00 GMT-0500";
-const cumpleRivaldo = "08 28 2021 00:00:00 GMT-0500";
-const cumpleLeo = "12 08 2021 00:00:00 GMT-0500";
-
-// countdown(cumpleRivaldo, "countdown", "tiempo finalizado");
