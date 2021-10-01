@@ -1,8 +1,10 @@
-
 const day = document.getElementById("dias");
 const hour = document.getElementById("horas");
 const minute = document.getElementById("minutos");
 const second = document.getElementById("segundos");
+const container = document.getElementById("countdown");
+const button = document.getElementById("button");
+const input = document.getElementById("input");
 
 
 function countdownToMyBirthday(maximumDate) {
@@ -20,34 +22,27 @@ function countdownToMyBirthday(maximumDate) {
   const days = Math.floor(remainTime / (3600 * 24))
     .toString()
     .padStart(2, "00");
-
   day.textContent = days
   hour.textContent = hours
   minute.textContent = minutes
   second.textContent = seconds
-  return remainTime
+  return () =>{
+    console.log('hola')
+  }
 }
 
-function countdown (maximumDate, message) {
-  const container = document.getElementById("countdown");
+function countdown (maximumDate) {
   setInterval(() => {
-    const time = countdownToMyBirthday(maximumDate);
-    if (time.remainTime <= 1) {
-      container.innerHTML = message;
-    }
-  }, 1000);
+    countdownToMyBirthday(maximumDate);
+  }
+  , 1000)
 };
-
-//formulario
-const button = document.getElementById("button");
-const input = document.getElementById("input");
-
 
 button.addEventListener("click", () => {
   if(input.value) {
-    countdown(input.value, "Se acabo el tiempo, vuelva a ingresar una fecha");
+    countdown(input.value);
   } else {
-    countdown('2022,08,08', "Se acabo el tiempo, vuelva a ingresar una fecha");
+    countdown('2022,08,08');
   }
 })
 
